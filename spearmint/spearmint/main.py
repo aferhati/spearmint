@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # Copyright (C) 2012 Jasper Snoek, Hugo Larochelle and Ryan P. Adams
 #
 # This code is written for research and educational purposes only to
@@ -35,14 +36,9 @@ try: import simplejson as json
 except ImportError: import json
 
 
-# TODO: this shouldn't be necessary when the project is installed like a normal
-# python lib.  For now though, this lets you symlink to supermint from your path and run it
-# from anywhere.
-sys.path.append(os.path.realpath(__file__))
-
-from ExperimentGrid  import *
-from helpers         import *
-from runner          import job_runner
+from spearmint.ExperimentGrid  import *
+from spearmint.helpers         import *
+from spearmint.runner          import job_runner
 
 # Use a global for the web process so we can kill it cleanly on exit
 web_proc = None
@@ -161,14 +157,16 @@ def main():
     check_experiment_dirs(expt_dir)
 
     # Load up the chooser module.
-    module  = importlib.import_module('chooser.' + options.chooser_module)
+    module  = importlib.import_module('.chooser.' + options.chooser_module,
+                                      package='spearmint')
     chooser = module.init(expt_dir, options.chooser_args)
 
     if options.web_status:
         web_proc = start_web_view(options, experiment_config, chooser)
 
     # Load up the job execution driver.
-    module = importlib.import_module('driver.' + options.driver)
+    module = importlib.import_module('.driver.' + options.driver,
+                                     package='spearmint')
     driver = module.init()
 
     # Loop until we run out of jobs.
@@ -327,4 +325,3 @@ if __name__=='__main__':
     print "setting up signal handler..."
     signal.signal(signal.SIGINT, sigint_handler)
     main()
-

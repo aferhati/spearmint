@@ -1,10 +1,10 @@
 import os
 import multiprocessing
 
-from dispatch import DispatchDriver
-from helpers  import *
-from runner   import job_runner
-from Locker   import Locker
+from spearmint.driver.dispatch import DispatchDriver
+from spearmint.helpers  import *
+from spearmint.runner   import job_runner
+from spearmint.Locker   import Locker
 
 class LocalDriver(DispatchDriver):
     def submit_job(self, job):

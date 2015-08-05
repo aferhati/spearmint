@@ -4,8 +4,8 @@ import re
 import subprocess
 import drmaa
 
-from dispatch import DispatchDriver
-from helpers  import *
+from spearmint.driver.dispatch import DispatchDriver
+from spearmint.helpers  import *
 
 
 # TODO: figure out if these modules are necessary, or if they can be handled in

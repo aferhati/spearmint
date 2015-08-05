@@ -35,8 +35,8 @@ import matplotlib.pyplot as plt
 import multiprocessing
 import copy
 
-from helpers import *
-from Locker  import *
+from spearmint.helpers import *
+from spearmint.Locker  import *
 
 # Wrapper function to pass to parallel ei optimization calls
 def optimize_pt(c, b, comp, pend, vals, labels, model):

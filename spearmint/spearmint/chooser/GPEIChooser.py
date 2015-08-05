@@ -31,8 +31,8 @@ import scipy.stats    as sps
 import scipy.optimize as spo
 import cPickle
 
-from Locker  import *
-from helpers import *
+from spearmint.Locker  import *
+from spearmint.helpers import *
 
 
 def init(expt_dir, arg_string):

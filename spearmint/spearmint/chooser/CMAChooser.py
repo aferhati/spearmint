@@ -1,6 +1,5 @@
 from cma import CMAEvolutionStrategy
-from spearmint import util
-import Locker
+from spearmint import util, Locker
 
 def init(expt_dir, arg_string):
     args = util.unpack_args(arg_string)
